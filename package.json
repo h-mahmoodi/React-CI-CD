@@ -10,16 +10,14 @@
     "format:check": "prettier --check \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepare": "husky install",
-    "tsc:check": "tsc --noEmit"
+    "tsc:check": "tsc --noEmit",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.41",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -65,6 +63,8 @@
     "typescript-eslint": "^8.0.1",
     "webpack": "^5.93.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "webpack-dev-server": "^5.0.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41"
   }
 }
