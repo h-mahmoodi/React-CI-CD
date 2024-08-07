@@ -4,7 +4,7 @@
     "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true // Allows for the parsing of JSX
+      "jsx": true
     }
   },
   "settings": {
@@ -20,9 +20,23 @@
     "plugin:import/warnings",
     "plugin:import/typescript",
     "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended" //should be at the last
+    "plugin:prettier/recommended",
+    "prettier"
   ],
+  "plugins": ["prettier"],
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "semi": true,
+        "trailingComma": "none",
+        "jsxSingleQuote": false,
+        "printWidth": 120,
+        "tabWidth": 2,
+        "endOfLine": "auto"
+      }
+    ],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-var-requires": "off",
