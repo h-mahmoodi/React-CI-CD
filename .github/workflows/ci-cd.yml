@@ -1,5 +1,4 @@
 name: CI-CD
-description: Continuous Integration and Continuous Deployment
 
 on:
   push:
