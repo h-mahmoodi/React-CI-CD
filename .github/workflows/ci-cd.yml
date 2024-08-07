@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  BUILD-STEPS:
+  BUILD-AND-DEPLOY:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,3 +32,12 @@ jobs:
 
       - name: Check the Test Files
         run: npm run test
+
+      - name: Build the Project
+        run: npm run build
+
+      - name: Deploy to Netlify
+        run: npx netlify deploy --dir=build --prod
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: da13bced-facc-4653-9216-883843f4db9b
