@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -19,11 +20,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
@@ -40,7 +41,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public', 'index.html') // Update the path to your index.html
+      template: path.resolve(__dirname, 'public', 'index.html')
     }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
@@ -49,10 +50,13 @@ module.exports = {
           from: 'public',
           to: '.',
           globOptions: {
-            ignore: ['**/index.html'] // Ignore index.html to prevent conflict
+            ignore: ['**/index.html']
           }
-        } // Copies everything from public to the root of the build folder
+        }
       ]
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'styles.css'
     })
   ],
   devServer: {
